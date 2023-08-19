@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1700348341156041
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4756713100081916}
+  - component: {fileID: 114407651984656701}
+  - component: {fileID: 114033288081607606}
+  - component: {fileID: 114528285477769753}
+  m_Layer: 0
+  m_Name: PoisonBallSmall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4756713100081916
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700348341156041}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114407651984656701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700348341156041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1893931606, guid: a51c3fa800ad97b373d9e6a26b0e70b2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  shadow:
+    useShadow: 0
+    shadow: {fileID: 0}
+    size: {x: 0, y: 0}
+    offset: {x: 0, y: 0}
+  renderer: {fileID: 0}
+  rigidbody25D: {fileID: 0}
+  _transform: {fileID: 4756713100081916}
+  collider25D: {fileID: 0}
+  instanceId: 0
+  particle: {fileID: 0}
+  spine: {fileID: 0}
+  audioName:
+  IsAutoRelease: 1
+  SmoothReleaseSpine: 1
+  resetOnPlay: 0
+  resetSpineOnPlay: 1
+  useSiblingIndex: 0
+  Owner: {fileID: 0}
+  explosion: {fileID: 0}
+  collisionMask: 0
+  particleOptimized: {fileID: 114294041640415312, guid: f411ff656775c5f4fb8811f7149de820, type: 2}
+  color:
+    serializedVersion: 2
+    key0: {r: 0.3019608, g: 0.8, b: 0.1764706, a: 1}
+    key1: {r: 0.37254903, g: 1, b: 0.28627452, a: 1}
+    key2: {r: 0.23529412, g: 0.7137255, b: 0.21960784, a: 0.5647059}
+    key3: {r: 0.26666668, g: 1, b: 0.42745098, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 15035
+    ctime2: 30069
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 4
+    m_NumAlphaKeys: 2
+  scale: 0.5
+  duration: 0.1
+--- !u!114 &114033288081607606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700348341156041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 770913613, guid: a51c3fa800ad97b373d9e6a26b0e70b2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  lookAtVelocity: 0
+  velocity: {x: 0, y: 0, z: 0}
+  Sleep: 0
+  gravityScale: 1
+  gameObject25D: {fileID: 0}
+  colliderRadius: 0
+  colliderOffset: 0
+  transform: {fileID: 0}
+  _amountToMove: {x: 0, y: 0, z: 0}
+  _isGround: 0
+--- !u!114 &114528285477769753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1700348341156041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1277897860, guid: a51c3fa800ad97b373d9e6a26b0e70b2, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  type: 0
+  radius: 0.14
+  size: {x: 0, y: 0}
+  offset: {x: 0, y: 0}
+  transform: {fileID: 0}
