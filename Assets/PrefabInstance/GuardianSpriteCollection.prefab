@@ -1,0 +1,684 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1516653411699958
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4746167990257674}
+  - component: {fileID: 114975841668221359}
+  m_Layer: 0
+  m_Name: GuardianSpriteCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4746167990257674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516653411699958}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114975841668221359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1516653411699958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -423199930, guid: 6a0938bb91b3dc6020d44f3ea6b44507, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  version: 3
+  materialIdsValid: 1
+  needMaterialInstance: 0
+  spriteDefinitions:
+  - name: CactusGolemLeg
+    boundsData:
+    - {x: 0, y: -0.004999995, z: 0}
+    - {x: 0.56, y: 0.96999997, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: -0.004999995, z: 0}
+    - {x: 0.56, y: 0.96999997, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.28, y: -0.48999998, z: 0}
+    - {x: 0.28, y: -0.48999998, z: 0}
+    - {x: -0.28, y: 0.48, z: 0}
+    - {x: 0.28, y: 0.48, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5566426, y: 0.57031447}
+    - {x: 0.66601366, y: 0.57031447}
+    - {x: 0.5566426, y: 0.75976366}
+    - {x: 0.66601366, y: 0.75976366}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 1004e0c7ea9322a4db83bad94676dfc4
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemLeftArm
+    boundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 0.75, y: 0.96999997, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 0.75, y: 0.96999997, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.37, y: -0.48999998, z: 0}
+    - {x: 0.38, y: -0.48999998, z: 0}
+    - {x: -0.37, y: 0.48, z: 0}
+    - {x: 0.38, y: 0.48, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.84961134}
+    - {x: 0.003908203, y: 0.9960918}
+    - {x: 0.19335742, y: 0.84961134}
+    - {x: 0.19335742, y: 0.9960918}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 29d2b7da5bd6d9549ab8fcf8650111b8
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemRightSholder
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0.79999995, y: 0.88, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0.79999995, y: 0.88, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.39999998, y: -0.44, z: 0}
+    - {x: 0.39999998, y: -0.44, z: 0}
+    - {x: -0.39999998, y: 0.44, z: 0}
+    - {x: 0.39999998, y: 0.44, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.20117383, y: 0.7675801}
+    - {x: 0.3574199, y: 0.7675801}
+    - {x: 0.20117383, y: 0.93945116}
+    - {x: 0.3574199, y: 0.93945116}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 3cd64150b1e41f44c9f5f8efa1908307
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemBody
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.04, y: 1.8199999, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 2.04, y: 1.8199999, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -1.02, y: -0.90999997, z: 0}
+    - {x: 1.02, y: -0.90999997, z: 0}
+    - {x: -1.02, y: 0.90999997, z: 0}
+    - {x: 1.02, y: 0.90999997, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.003908203, y: 0.003908203}
+    - {x: 0.40234178, y: 0.003908203}
+    - {x: 0.003908203, y: 0.35937303}
+    - {x: 0.40234178, y: 0.35937303}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 7e732f7f6e69add42991968847c3f815
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemLeftSholder
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.36, y: 1.62, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.36, y: 1.62, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.68, y: -0.81, z: 0}
+    - {x: 0.68, y: -0.81, z: 0}
+    - {x: -0.68, y: 0.81, z: 0}
+    - {x: 0.68, y: 0.81, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.41015822, y: 0.003908203}
+    - {x: 0.41015822, y: 0.26952928}
+    - {x: 0.72656053, y: 0.003908203}
+    - {x: 0.72656053, y: 0.26952928}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 84316c7b2e8fbe541b28d25a083c45b1
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemWeapon
+    boundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 2.4299998, y: 0.83, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 2.4299998, y: 0.83, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -1.2099999, y: -0.42, z: 0}
+    - {x: 1.2199999, y: -0.42, z: 0}
+    - {x: -1.2099999, y: 0.41, z: 0}
+    - {x: 1.2199999, y: 0.41, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.73437697, y: 0.003908203}
+    - {x: 0.73437697, y: 0.47851366}
+    - {x: 0.8964824, y: 0.003908203}
+    - {x: 0.8964824, y: 0.47851366}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 8518ff0f12b025a41852eab00ed791bd
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemFlower
+    boundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 0.78999996, y: 0.83, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 0.78999996, y: 0.83, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.39, y: -0.42, z: 0}
+    - {x: 0.39999998, y: -0.42, z: 0}
+    - {x: -0.39, y: 0.41, z: 0}
+    - {x: 0.39999998, y: 0.41, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.36523634, y: 0.6269551}
+    - {x: 0.36523634, y: 0.78124803}
+    - {x: 0.5273418, y: 0.6269551}
+    - {x: 0.5273418, y: 0.78124803}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: ba2ee5fe085cce548a7512a96b6fb460
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemRightArm
+    boundsData:
+    - {x: 0.004999995, y: 0, z: 0}
+    - {x: 0.57, y: 0.91999996, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.004999995, y: 0, z: 0}
+    - {x: 0.57, y: 0.91999996, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.28, y: -0.45999998, z: 0}
+    - {x: 0.29, y: -0.45999998, z: 0}
+    - {x: -0.28, y: 0.45999998, z: 0}
+    - {x: 0.29, y: 0.45999998, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5351582, y: 0.7675801}
+    - {x: 0.6464824, y: 0.7675801}
+    - {x: 0.5351582, y: 0.94726366}
+    - {x: 0.6464824, y: 0.94726366}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: e65acb9b4406bcf43a8ef7e983844ef4
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemHead
+    boundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 1.15, y: 0.87, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 1.15, y: 0.87, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.57, y: -0.44, z: 0}
+    - {x: 0.58, y: -0.44, z: 0}
+    - {x: -0.57, y: 0.43, z: 0}
+    - {x: 0.58, y: 0.43, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.6738301, y: 0.67187697}
+    - {x: 0.89843553, y: 0.67187697}
+    - {x: 0.6738301, y: 0.8417949}
+    - {x: 0.89843553, y: 0.8417949}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: e8909b564ad32f04ca45005b6b199d82
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: CactusGolemSpine
+    boundsData:
+    - {x: 0, y: -0.004999995, z: 0}
+    - {x: 1.3199999, y: 0.90999997, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: -0.004999995, z: 0}
+    - {x: 1.3199999, y: 0.90999997, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.65999997, y: -0.45999998, z: 0}
+    - {x: 0.65999997, y: -0.45999998, z: 0}
+    - {x: -0.65999997, y: 0.45, z: 0}
+    - {x: 0.65999997, y: 0.45, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.7050801, y: 0.4863301}
+    - {x: 0.96288866, y: 0.4863301}
+    - {x: 0.7050801, y: 0.66406053}
+    - {x: 0.96288866, y: 0.66406053}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 1, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: f0d30d144393dce4c8637539f2009910
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 0
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: EarthQuake
+    boundsData:
+    - {x: 0.005000025, y: 0, z: 0}
+    - {x: 0.55, y: 0.38, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.005000025, y: 0, z: 0}
+    - {x: 0.55, y: 0.38, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.26999998, y: -0.19, z: 0}
+    - {x: 0.28000003, y: -0.19, z: 0}
+    - {x: -0.26999998, y: 0.19, z: 0}
+    - {x: 0.28000003, y: 0.19, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.90429884, y: 0.003908203}
+    - {x: 0.90429884, y: 0.11132617}
+    - {x: 0.97851366, y: 0.003908203}
+    - {x: 0.97851366, y: 0.11132617}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 075d8f374d5a01d488c3745e28c07151
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: EarthWindEffectRight
+    boundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.4599999, y: 0.71999997, z: 0}
+    untrimmedBoundsData:
+    - {x: 0, y: 0, z: 0}
+    - {x: 1.4599999, y: 0.71999997, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.72999996, y: -0.35999998, z: 0}
+    - {x: 0.72999996, y: -0.35999998, z: 0}
+    - {x: -0.72999996, y: 0.35999998, z: 0}
+    - {x: 0.72999996, y: 0.35999998, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.5566426, y: 0.27734572}
+    - {x: 0.5566426, y: 0.56249803}
+    - {x: 0.69726366, y: 0.27734572}
+    - {x: 0.69726366, y: 0.56249803}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 1e3fc8117ff8a3b40ab01bc3185da24e
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  - name: EarthWindEffectLeft
+    boundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 1.75, y: 0.71, z: 0}
+    untrimmedBoundsData:
+    - {x: 0.004999995, y: -0.004999995, z: 0}
+    - {x: 1.75, y: 0.71, z: 0}
+    texelSize: {x: 0.01, y: 0.01}
+    positions:
+    - {x: -0.87, y: -0.35999998, z: 0}
+    - {x: 0.88, y: -0.35999998, z: 0}
+    - {x: -0.87, y: 0.35, z: 0}
+    - {x: 0.88, y: 0.35, z: 0}
+    normals: []
+    tangents: []
+    uvs:
+    - {x: 0.41015822, y: 0.27734572}
+    - {x: 0.41015822, y: 0.61913866}
+    - {x: 0.54882616, y: 0.27734572}
+    - {x: 0.54882616, y: 0.61913866}
+    normalizedUvs:
+    - {x: 0, y: 0}
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 1, y: 1}
+    indices: 000000000300000001000000020000000300000000000000
+    material: {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+    materialId: 0
+    sourceTextureGUID: 5e3b189170b6e5b45921ad0bb601d825
+    extractRegion: 0
+    regionX: 0
+    regionY: 0
+    regionW: 0
+    regionH: 0
+    flipped: 1
+    complexGeometry: 0
+    physicsEngine: 0
+    colliderType: 0
+    customColliders: []
+    colliderVertices: []
+    colliderIndicesFwd:
+    colliderIndicesBack:
+    colliderConvex: 0
+    colliderSmoothSphereCollisions: 0
+    polygonCollider2D: []
+    edgeCollider2D: []
+    attachPoints: []
+  premultipliedAlpha: 0
+  material: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 02a2a29cba5aea04f8965158321de545, type: 2}
+  textures:
+  - {fileID: 2800000, guid: 53356c95ac6a0864bb818cf18070d22b, type: 3}
+  pngTextures: []
+  materialPngTextureId: 00000000
+  textureFilterMode: 1
+  textureMipMaps: 0
+  allowMultipleAtlases: 0
+  spriteCollectionGUID: 7b2931935d562034296b349f8d708471
+  spriteCollectionName: GuardianSpriteCollection
+  assetName:
+  loadable: 0
+  invOrthoSize: 2
+  halfTargetHeight: 50
+  buildKey: 1265007146
+  dataGuid: 9fbf59addef7991408d43c604819ada8
+  managedSpriteCollection: 0
+  hasPlatformData: 0
+  spriteCollectionPlatforms: []
+  spriteCollectionPlatformGUIDs: []

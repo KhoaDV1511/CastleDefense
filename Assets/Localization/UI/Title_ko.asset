@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -622809992, guid: 76ad3cbe9d98d83f7de53e0a92768023, type: 3}
+  m_Name: Title_ko
+  m_EditorClassIdentifier:
+  m_LocaleId:
+    m_Code: ko
+  m_SharedData: {fileID: 11400000, guid: 658215831c0b5a44bb5b1ce8177f5d62, type: 2}
+  m_Metadata:
+    m_Items:
+      Array: []
+  m_TableData:
+  - m_Id: 6907236352
+    m_Localized: 인벤토리
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 1269719897477120
+    m_Localized: 영웅
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 18864940537614336
+    m_Localized: 던전
+    m_Metadata:
+      m_Items:
+        Array: []
+  - m_Id: 44602103707209728
+    m_Localized: 인챈트
+    m_Metadata:
+      m_Items:
+        Array: []
+  references:
+    version: 2
+    RefIds: []
