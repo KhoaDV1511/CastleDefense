@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="05260d56-fc73-4c3a-8002-adc0710399be" name="Changes" comment="" />
+    <list default="true" id="05260d56-fc73-4c3a-8002-adc0710399be" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CastleDefense.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CastleDefense.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture2D/atlas0.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture2D/atlas0.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Texture2D/atlas0_3.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Texture2D/atlas0_3.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/UnityConnectSettings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +23,12 @@
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Admin/Documents/GameUnity/CastleDefense/Assets/Scenes/Game.unity" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Admin/Documents/GameUnity/CastleDefense/Assets/Texture2D/atlas0_3.png.meta" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Admin/Documents/GameUnity/CastleDefense/ProjectSettings/EditorBuildSettings.asset" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Admin/Documents/GameUnity/CastleDefense/ProjectSettings/UnityConnectSettings.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -28,6 +44,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -84,6 +104,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="change project setting" />
-    <option name="LAST_COMMIT_MESSAGE" value="change project setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
 </project>
