@@ -14,6 +14,14 @@ public class Projectile : MonoBehaviour
     [SerializeField] private Transform firePoint;
     private Camera _cam;
     private Rigidbody2D _rb;
+    private float dist;
+    private float nextX;
+    private float baseY;
+    private float height;
+    
+    private float targetX;
+    private float archerX;
+    private Vector3 targetPos;
 
     private void Start()
     {
@@ -23,7 +31,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        Vector3 targetPos = _cam.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
+        targetPos = _cam.ScreenToWorldPoint(Input.mousePosition) - firePoint.position;
         targetPos.z = 0;
         float height = targetPos.y + targetPos.magnitude / 2f;
         height = Mathf.Max(0.01f, height - 4f);
@@ -31,6 +39,7 @@ public class Projectile : MonoBehaviour
         float v0;
         float time;
         CalculatePathWithHeight(targetPos, height, out v0, out angle, out time);
+        
         //DrawPath(v0, angleShoot, time, step);
         
         if (Input.GetKeyDown(KeyCode.Space))
@@ -39,13 +48,22 @@ public class Projectile : MonoBehaviour
             StartCoroutine(Coroutine_Movement(v0, angle, time));
         }
     }
-    
-    private void TrackMovement()
+
+    private static Quaternion LookAtTarget(Vector2 rotation)
     {
-        Vector2 dir = _rb.velocity;
-        float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
-        Debug.Log(angle);
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        return Quaternion.Euler(0, 0, Mathf.Atan2(rotation.y, -rotation.x) * Mathf.Rad2Deg);
+    }
+    private void TrackMovement(float speed)
+    {
+        archerX = firePoint.transform.position.x;
+        targetX = targetPos.x;
+
+        dist = targetX - archerX;
+        nextX = Mathf.MoveTowards(transform.position.x, targetX, speed * Time.deltaTime);
+        baseY = Mathf.Lerp(firePoint.transform.position.y, targetPos.y, (nextX - archerX) / dist);
+        height = 2 * (nextX - archerX) * (nextX - targetX) / (-0.25f * dist * dist);
+        Vector3 mevePosition = new Vector3(nextX, baseY + height, transform.position.z);
+        transform.rotation = LookAtTarget(mevePosition - transform.position);
     }
 
     private float QuadraticEquation(float a, float b, float c, float sign)
@@ -110,7 +128,7 @@ public class Projectile : MonoBehaviour
             float x = v0 * t * Mathf.Cos(angle);
             float y = v0 * t * Mathf.Sin(angle) - (1f / 2f) * -Physics.gravity.y * Mathf.Pow(t, 2);
             transform.position = firePoint.position + new Vector3(x, y, 0);
-            TrackMovement();
+            TrackMovement(v0);
             t += Time.deltaTime;
             yield return null;
         }
