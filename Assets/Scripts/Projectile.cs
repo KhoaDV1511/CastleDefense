@@ -20,11 +20,11 @@ public class Projectile : MonoBehaviour
     private float archerX;
     private Vector3 targetPos;
     private float x;
-    private float speed = 1;
+    private float speed = 0.01f;
 
     private void Start()
     {
-        gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
+        //gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
         _rb = GetComponent<Rigidbody2D>();
         StartCoroutine(SpeedUp());
     }
@@ -52,7 +52,7 @@ public class Projectile : MonoBehaviour
         Vector3 movePosition = new Vector3(nextX, baseY + height, transform.position.z);
         transform.rotation = LookAtTarget(movePosition - transform.position);
         transform.position = movePosition;
-        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        //gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         if(transform.position == enemyPoint.position) Destroy(gameObject);
     }
 
