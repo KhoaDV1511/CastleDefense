@@ -20,22 +20,25 @@ public class Projectile : MonoBehaviour
     private float archerX;
     private Vector3 targetPos;
     private float x;
+    private float speed = 1;
 
     private void Start()
     {
+        gameObject.GetComponent<SpriteRenderer>().color = Color.clear;
         _rb = GetComponent<Rigidbody2D>();
+        StartCoroutine(SpeedUp());
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // float angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
         // transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        TrackMovement(10);
+        TrackMovement(speed);
     }
 
     private static Quaternion LookAtTarget(Vector2 rotation)
     {
-        return Quaternion.Euler(0, 0, Mathf.Atan2(rotation.y - 0.01f, rotation.x - 0.01f) * Mathf.Rad2Deg);
+        return Quaternion.Euler(0, 0, Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg);
     }
     private void TrackMovement(float speed)
     {
@@ -49,5 +52,16 @@ public class Projectile : MonoBehaviour
         Vector3 movePosition = new Vector3(nextX, baseY + height, transform.position.z);
         transform.rotation = LookAtTarget(movePosition - transform.position);
         transform.position = movePosition;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        if(transform.position == enemyPoint.position) Destroy(gameObject);
+    }
+
+    IEnumerator SpeedUp()
+    {
+        for (int i = 1; i <= 10; i++)
+        {
+            yield return new WaitForSeconds(0.5f/10);
+            speed++;
+        }
     }
 }
