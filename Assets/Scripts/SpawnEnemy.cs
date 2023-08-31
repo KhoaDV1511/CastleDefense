@@ -21,8 +21,8 @@ public class SpawnEnemy : MonoBehaviour
             obj.transform.SetParent(transform);
             obj.SetActive(true);
         }
-        Signals.Get<CastlePos>().Dispatch(castle.transform.position);
         Signals.Get<PosAIMove>().Dispatch(castleMoveAround[0].transform.position);
         Signals.Get<PosAIMove>().Dispatch(castleMoveAround[1].transform.position);
+        Signals.Get<CastlePos>().Dispatch(castle.transform.position);
     }
 }
