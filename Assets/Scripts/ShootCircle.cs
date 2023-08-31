@@ -6,11 +6,13 @@ using UnityEngine;
 public class ShootCircle : MonoBehaviour
 {
     private float _speed;
+    private float _maxSpeed;
 
     private Coroutine _speedUp;
     // Start is called before the first frame update
     void Awake()
     {
+        _maxSpeed = 9;
         _speed = 0.01f;
         Signals.Get<EnemyPosProjectile>().AddListener(TrackMovement);
         if(_speedUp != null) StopCoroutine(_speedUp);
@@ -30,9 +32,9 @@ public class ShootCircle : MonoBehaviour
     }
     IEnumerator SpeedUp()
     {
-        for (int i = 1; i <= 7; i++)
+        for (int i = 1; i <= _maxSpeed; i++)
         {
-            yield return new WaitForSeconds(0.3f/7);
+            yield return new WaitForSeconds(0.3f/_maxSpeed);
             _speed++;
         }
     }

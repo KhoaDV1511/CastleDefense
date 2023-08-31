@@ -7,6 +7,6 @@ public class PosAIMoveAround : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Signals.Get<PosAIMove>().Dispatch(transform.position);
+        
     }
 }

@@ -22,9 +22,12 @@ public class Projectile : MonoBehaviour
     private Vector3 targetPos;
     private float x;
     private float speed;
+    private float maxSpeed;
 
     private void Awake()
     {
+        maxSpeed = 12;
+        speed = 0.01f;
         Signals.Get<EnemyPosArrow>().AddListener(TrackMovement);
         if(_speedUp != null) StopCoroutine(_speedUp);
         _speedUp = StartCoroutine(SpeedUp());
@@ -32,7 +35,6 @@ public class Projectile : MonoBehaviour
 
     private void OnDestroy()
     {
-        speed = 0.01f;
         Signals.Get<EnemyPosArrow>().RemoveListener(TrackMovement);
     }
     private static Quaternion LookAtTarget(Vector2 rotation)
@@ -56,16 +58,15 @@ public class Projectile : MonoBehaviour
     IEnumerator SpeedUp()
     {
         speed = 0.01f;
-        for (int i = 1; i <= 10; i++)
+        for (int i = 1; i <= maxSpeed; i++)
         {
-            yield return new WaitForSeconds(0.3f/10);
+            yield return new WaitForSeconds(0.3f/maxSpeed);
             speed++;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("OnTriggerEnter");
         if(other.CompareTag("Enemy"))
         {
             Destroy(gameObject);

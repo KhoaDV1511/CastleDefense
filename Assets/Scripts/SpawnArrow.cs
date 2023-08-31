@@ -13,7 +13,7 @@ public class SpawnArrow : MonoBehaviour
     [SerializeField] LayerMask mask;
     private Coroutine _sweep;
 
-    private float _sweepFrequency = 0.01f;
+    private float _sweepFrequency = 0.005f;
 
     private List<Vector3> _enemyPos = new List<Vector3>();
     private List<float> _distanceEnemy = new List<float>();
