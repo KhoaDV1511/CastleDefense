@@ -104,6 +104,8 @@ GameObject:
   - component: {fileID: 7776902081414802776}
   - component: {fileID: 3625229074431091857}
   - component: {fileID: 7640232165505973324}
+  - component: {fileID: 8595953704464654084}
+  - component: {fileID: 4946817985251393647}
   m_Layer: 5
   m_Name: Ten
   m_TagString: Untagged
@@ -139,7 +141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 7506573360762712301}
-  enemyPoint: {fileID: 0}
 --- !u!212 &7640232165505973324
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -192,6 +193,43 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &8595953704464654084
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556868115698400677}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.0000009536743}
+  serializedVersion: 2
+  m_Radius: 0.2
+--- !u!50 &4946817985251393647
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556868115698400677}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2556868115826772407
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7506573360762712301}
   - component: {fileID: 8606711207248390951}
-  - component: {fileID: 5066124294814354312}
+  - component: {fileID: 2742477930804018325}
   m_Layer: 5
   m_Name: Archer
   m_TagString: Untagged
@@ -280,7 +318,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5066124294814354312
+--- !u!114 &2742477930804018325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,9 +327,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2556868115826772407}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17f449afa6e98124481b8d1383a22a47, type: 3}
+  m_Script: {fileID: 11500000, guid: 10d5b4ce093fe59469993cc93e9053d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objShoot: {fileID: 7776902081414802776}
+  radius: 16
+  mask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &2556868116048024264
 GameObject:
   m_ObjectHideFlags: 0

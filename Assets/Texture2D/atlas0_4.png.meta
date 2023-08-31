@@ -254,7 +254,7 @@ TextureImporter:
         width: 25
         height: 57
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -262,6 +262,27 @@ TextureImporter:
       bones: []
       spriteID: 7cb15b1ea0a239845949e1d23bf25dbb
       internalID: 533439259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: atlas0_4_6
+      rect:
+        serializedVersion: 2
+        x: 1919
+        y: 1689
+        width: 37
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adafe83ef32f0e345982138618895595
+      internalID: -1545575123
       vertices: []
       indices: 
       edges: []
@@ -283,6 +304,7 @@ TextureImporter:
       atlas0_4_3: 140808076
       atlas0_4_4: -1938587269
       atlas0_4_5: 533439259
+      atlas0_4_6: -1545575123
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
