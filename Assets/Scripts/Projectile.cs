@@ -23,19 +23,30 @@ public class Projectile : MonoBehaviour
     private float x;
     private float speed;
     private float maxSpeed;
+    
 
     private void Awake()
     {
         maxSpeed = 12;
         speed = 0.01f;
-        Signals.Get<EnemyPosArrow>().AddListener(TrackMovement);
+        Signals.Get<OnStopGame>().AddListener(StopAttack);
         if(_speedUp != null) StopCoroutine(_speedUp);
         _speedUp = StartCoroutine(SpeedUp());
     }
 
+    private void Update()
+    {
+        TrackMovement(SpawnArrow.Instance.enemyPosMin);
+    }
+
     private void OnDestroy()
     {
-        Signals.Get<EnemyPosArrow>().RemoveListener(TrackMovement);
+        Signals.Get<OnStopGame>().RemoveListener(StopAttack);
+    }
+
+    private void StopAttack()
+    {
+        Destroy(gameObject);
     }
     private static Quaternion LookAtTarget(Vector2 rotation)
     {

@@ -7,7 +7,9 @@ TagManager:
   - FxTemporaire
   - Enemy
   - Arrow
-  - CIrcleAP
+  - CircleAP
+  - CastleReable
+  - Acher
   layers:
   - Default
   - TransparentFX

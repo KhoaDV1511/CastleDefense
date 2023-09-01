@@ -14,6 +14,7 @@ public class ShootCircle : MonoBehaviour
     {
         _maxSpeed = 9;
         _speed = 0.01f;
+        Signals.Get<OnStopGame>().AddListener(StopAttack);
         Signals.Get<EnemyPosProjectile>().AddListener(TrackMovement);
         if(_speedUp != null) StopCoroutine(_speedUp);
         _speedUp = StartCoroutine(SpeedUp());
@@ -21,7 +22,12 @@ public class ShootCircle : MonoBehaviour
 
     private void OnDestroy()
     {
+        Signals.Get<OnStopGame>().RemoveListener(StopAttack);
         Signals.Get<EnemyPosProjectile>().RemoveListener(TrackMovement);
+    }
+    private void StopAttack()
+    {
+        Destroy(gameObject);
     }
 
     private void TrackMovement(Vector3 enemy)

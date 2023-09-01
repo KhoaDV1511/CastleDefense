@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnProjectile : MonoBehaviour
@@ -13,6 +14,7 @@ public class SpawnProjectile : MonoBehaviour
     private Coroutine _sweep;
 
     private float _sweepFrequency = 0.01f;
+    private float _quantityHealthCastle = 100;
 
     private List<Vector3> _enemyPos = new List<Vector3>();
     private List<float> _distanceEnemy = new List<float>();
@@ -21,10 +23,22 @@ public class SpawnProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _startInvoke = false;
+        Signals.Get<OnStopGame>().AddListener(StopSpawn);
+        Signals.Get<StartFindEnemy>().AddListener(StartSpawn);
+    }
+    private void StartSpawn()
+    {
         if(_sweep != null) StopCoroutine(_sweep);
         _sweep = StartCoroutine(EnemyPos());
+        _startInvoke = false;
     }
 
+    private void StopSpawn()
+    {
+        if(_sweep != null) StopCoroutine(_sweep);
+        CancelInvoke();
+    }
     private void SpawnProjectiles()
     {
         var obj = Instantiate(objShoot, objShoot.transform.position, Quaternion.identity).gameObject;
@@ -36,6 +50,7 @@ public class SpawnProjectile : MonoBehaviour
     {
         _enemyPos.Clear();
         _enemysInsideArea = Physics2D.OverlapCircleAll(transform.position, radius, mask);
+        //if(_quantityHealthCastle <= 0) yield break;
         if(_enemysInsideArea.Length > 0)
             PosEnemyMin();
  
