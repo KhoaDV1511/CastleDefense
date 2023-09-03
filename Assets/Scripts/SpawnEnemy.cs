@@ -29,9 +29,10 @@ public class SpawnEnemy : MonoBehaviour
     {
         btnBattle.interactable = true;
     }
-    public void EnemyAttack()
+    private void EnemyAttack()
     {
         btnBattle.interactable = false;
+        GamePlayModel.Instance.isPlaying = true;
         _spawnQuantity = 10;
         
         for (int i = 1; i <= _spawnQuantity; i++)

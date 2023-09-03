@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
+using DG.Tweening;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class SpawnArrow : MonoBehaviour
 {
@@ -22,8 +25,16 @@ public class SpawnArrow : MonoBehaviour
     public static SpawnArrow Instance;
     private SpawnArrow _instance;
     private float _repeatRate = 1;
+    private const int TIME_SKILL = 2;
+    private const int TIME_COOLDOWN_SKILL = 10;
 
     private bool _startInvoke = false;
+    private bool _isCoolDown = false;
+    private const int MANA_ACHER = 10;
+    private Tween _doneSkill;
+    private Tween _coolDownSkill;
+
+    private GamePlayModel _gamePlayModel = GamePlayModel.Instance;
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,15 +47,38 @@ public class SpawnArrow : MonoBehaviour
         {
             Instance = _instance;
         }
+
+        _isCoolDown = false;
         _startInvoke = false;
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
         Signals.Get<StartFindEnemy>().AddListener(StartSpawn);
+        Signals.Get<ArcherSkill>().AddListener(SkillArcher);
     }
-    public void SkillArcher()
+
+    private void OnMouseDown()
     {
+        if(_enemysInsideArea.Length > 0 && _gamePlayModel.isPlaying)
+        {
+            Signals.Get<ManaUse>().Dispatch(MANA_ACHER);
+        }
+        
+    }
+
+    private void SkillArcher()
+    {
+        if(_isCoolDown) return;
         CancelInvoke();
         _repeatRate = 0.2f;
         InvokeRepeating(nameof(SpawnProjectile), 0, _repeatRate);
+        _isCoolDown = true;
+        Signals.Get<CoolDownBarArcher>().Dispatch(TIME_COOLDOWN_SKILL);
+        _coolDownSkill = DOVirtual.DelayedCall(TIME_COOLDOWN_SKILL, () => _isCoolDown = false);
+        _doneSkill = DOVirtual.DelayedCall(TIME_SKILL,() =>
+        {
+            CancelInvoke();
+            _repeatRate = 1f;
+            InvokeRepeating(nameof(SpawnProjectile), 0, _repeatRate);
+        });
     }
     private void StartSpawn()
     {
@@ -54,6 +88,10 @@ public class SpawnArrow : MonoBehaviour
     }
     private void StopSpawn()
     {
+        _coolDownSkill?.Kill();
+        _doneSkill?.Kill();
+        _isCoolDown = false;
+        _gamePlayModel.isPlaying = false;
         if(_sweep != null) StopCoroutine(_sweep);
         CancelInvoke();
     }
