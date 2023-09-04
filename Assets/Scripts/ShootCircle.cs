@@ -34,7 +34,7 @@ public class ShootCircle : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, enemy, _speed * Time.deltaTime);
         //transform.up = enemy - transform.position;
-        if(transform.position == enemy) Destroy(gameObject);
+        //if(transform.position == enemy) Destroy(gameObject);
     }
     IEnumerator SpeedUp()
     {

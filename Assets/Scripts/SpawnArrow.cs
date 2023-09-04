@@ -31,6 +31,7 @@ public class SpawnArrow : MonoBehaviour
     private bool _startInvoke = false;
     private bool _isCoolDown = false;
     private const int MANA_ACHER = 10;
+    private const string ACHER = "Archer";
     private Tween _doneSkill;
     private Tween _coolDownSkill;
 
@@ -52,21 +53,20 @@ public class SpawnArrow : MonoBehaviour
         _startInvoke = false;
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
         Signals.Get<StartFindEnemy>().AddListener(StartSpawn);
-        Signals.Get<ArcherSkill>().AddListener(SkillArcher);
+        Signals.Get<ArcherSkills>().AddListener(SkillArcher);
     }
 
     private void OnMouseDown()
     {
-        if(_enemysInsideArea.Length > 0 && _gamePlayModel.isPlaying)
+        if(_gamePlayModel.isPlaying && _enemysInsideArea.Length > 0 && !_isCoolDown)
         {
-            Signals.Get<ManaUse>().Dispatch(MANA_ACHER);
+            Signals.Get<ManaUse>().Dispatch(ACHER, MANA_ACHER);
         }
         
     }
 
     private void SkillArcher()
     {
-        if(_isCoolDown) return;
         CancelInvoke();
         _repeatRate = 0.2f;
         InvokeRepeating(nameof(SpawnProjectile), 0, _repeatRate);

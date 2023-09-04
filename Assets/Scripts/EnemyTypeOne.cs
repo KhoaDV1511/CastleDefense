@@ -6,6 +6,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
@@ -28,7 +29,7 @@ public class EnemyTypeOne : MonoBehaviour
     private List<Vector3> _posAIMove = new List<Vector3>();
 
     private int _posRandom;
-    private int _health = 10;
+    public int _health = 10;
     private int _healthMax;
     private int _quantity;
 
@@ -49,9 +50,11 @@ public class EnemyTypeOne : MonoBehaviour
     private const int DAME_ERROW = 2;
     private const int DAME_CIRCLE_AP = 1;
     private const int DAME_ENEMY = 1;
+    private const int DAME_BOT = 2;
     // Start is called before the first frame update
     private void Awake()
     {
+        BotAttack.EnemyTypeOnes.Add(this);
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         _stopAIMove = false;
@@ -65,6 +68,7 @@ public class EnemyTypeOne : MonoBehaviour
 
     private void OnDestroy()
     {
+        BotAttack.EnemyTypeOnes.Remove(this);
         _castlePos.RemoveListener(TrackMovement);
         _quantityEnemy.RemoveListener(Quantity);
         Signals.Get<PosAIMove>().RemoveListener(PosAIMoveTo);
@@ -145,6 +149,24 @@ public class EnemyTypeOne : MonoBehaviour
         yield return new WaitForSeconds(_sweepFrequencyAtack);
         if(_sweepAttack != null) StopCoroutine(_sweepAttack);
         _sweepAttack = StartCoroutine(AttackCastle());
+    }
+
+    public void DameBotAttack()
+    {
+        _health -= DAME_BOT;
+        var scaleX = spriteHealth.transform.localScale.x - (float)DAME_BOT / _healthMax;
+        if (scaleX <= 0) scaleX = 0;
+        spriteHealth.transform.localScale = new Vector3(scaleX, 1, 1);
+        
+        if (_health > 0) return;
+        _castlePos.Dispatch(_castleAttack);
+        _quantity--;
+        if(_quantity <= 0)
+        {
+            _onStopGame.Dispatch();
+        }
+        _quantityEnemy.Dispatch(_quantity);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

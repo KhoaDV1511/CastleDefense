@@ -21,6 +21,10 @@ public class Castle : MonoBehaviour
     private float _manaCastleMax;
 
     private float amountMana;
+    private const string ACHER = "Archer";
+    private const string COMBATANT = "combatant";
+    private const string THUNDER = "Thunder";
+    private const string MAGICIAN = "magician";
     // Start is called before the first frame update
     void Awake()
     {
@@ -36,7 +40,7 @@ public class Castle : MonoBehaviour
         _manaUse.RemoveListener(CheckMana);
     }
 
-    private void CheckMana(int mana)
+    private void CheckMana(string typeUse, int mana)
     {
         amountMana = spriteMana.fillAmount;
         amountMana -= mana / _manaCastleMax;
@@ -44,7 +48,18 @@ public class Castle : MonoBehaviour
         _manaCastle -= mana;
         spriteMana.fillAmount = amountMana;
         valueManaTxt.text = _manaCastle.ToString();
-        Signals.Get<ArcherSkill>().Dispatch();
+        switch (typeUse)
+        {
+            case ACHER:
+                Signals.Get<ArcherSkills>().Dispatch();
+                break;
+            case COMBATANT:
+                Signals.Get<CombatantSkills>().Dispatch();
+                break;
+            default:
+                break;
+        }
+        
     }
 
     private void ReceiveDameEnemy(int dame)
