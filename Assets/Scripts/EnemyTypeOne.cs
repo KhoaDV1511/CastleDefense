@@ -46,11 +46,13 @@ public class EnemyTypeOne : MonoBehaviour
     private const string ARROW = "Arrow";
     private const string CIRCLE_AP = "CircleAP";
     private const string CASTLE_REABLE = "CastleReable";
+    private const string THUNDER = "Thunder";
 
     private const int DAME_ERROW = 2;
     private const int DAME_CIRCLE_AP = 1;
     private const int DAME_ENEMY = 1;
     private const int DAME_BOT = 2;
+    private const int DAME_THUNDER= 3;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -188,6 +190,13 @@ public class EnemyTypeOne : MonoBehaviour
         {
             _health -= DAME_CIRCLE_AP;
             var scaleX = spriteHealth.transform.localScale.x - (float)DAME_CIRCLE_AP / _healthMax;
+            if (scaleX <= 0) scaleX = 0;
+            spriteHealthTransform.localScale = new Vector3(scaleX, 1, 1);
+        }
+        if (other.CompareTag(THUNDER))
+        {
+            _health -= DAME_THUNDER;
+            var scaleX = spriteHealth.transform.localScale.x - (float)DAME_THUNDER / _healthMax;
             if (scaleX <= 0) scaleX = 0;
             spriteHealthTransform.localScale = new Vector3(scaleX, 1, 1);
         }

@@ -56,6 +56,9 @@ public class Castle : MonoBehaviour
             case COMBATANT:
                 Signals.Get<CombatantSkills>().Dispatch();
                 break;
+            case THUNDER:
+                Signals.Get<ThunderSkills>().Dispatch();
+                break;
             default:
                 break;
         }

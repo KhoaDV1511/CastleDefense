@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnProjectile : MonoBehaviour
 {
     [SerializeField] private Transform objShoot;
+    [SerializeField] private GameObject skill;
     private Collider2D[] _enemysInsideArea;
 
     [SerializeField] private float radius;
@@ -19,13 +21,41 @@ public class SpawnProjectile : MonoBehaviour
     private List<Vector3> _enemyPos = new List<Vector3>();
     private List<float> _distanceEnemy = new List<float>();
 
+    private Vector3 _posSkill;
+    
+    private const int MANA_COMBATANT = 10;
+    private const string THUNDER = "Thunder";
+    private GamePlayModel _gamePlayModel = GamePlayModel.Instance;
+    private const int TIME_COOLDOWN_SKILL = 10;
+    private Tween _coolDownSkill;
+
+    private bool _isCoolDown = false;
     private bool _startInvoke = false;
     // Start is called before the first frame update
     void Awake()
     {
         _startInvoke = false;
+        _isCoolDown = false;
+        Signals.Get<ThunderSkills>().AddListener(Thunder);
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
         Signals.Get<StartFindEnemy>().AddListener(StartSpawn);
+    }
+    private void OnMouseDown()
+    {
+        if(_gamePlayModel.isPlaying && _enemysInsideArea.Length > 0 && !_isCoolDown)
+            Signals.Get<ManaUse>().Dispatch(THUNDER, MANA_COMBATANT);
+    }
+
+    private void Thunder()
+    {
+        _isCoolDown = true;
+        Signals.Get<CoolDownBarThunder>().Dispatch(TIME_COOLDOWN_SKILL);
+        _coolDownSkill = DOVirtual.DelayedCall(TIME_COOLDOWN_SKILL, () =>
+        {
+            _isCoolDown = false;
+        });
+        skill.transform.position = _posSkill;
+        skill.SetActive(true);
     }
     private void StartSpawn()
     {
@@ -36,6 +66,8 @@ public class SpawnProjectile : MonoBehaviour
 
     private void StopSpawn()
     {
+        _coolDownSkill?.Kill();
+        _isCoolDown = false;
         if(_sweep != null) StopCoroutine(_sweep);
         CancelInvoke();
     }
@@ -80,6 +112,7 @@ public class SpawnProjectile : MonoBehaviour
             _startInvoke = true;
         }
         Signals.Get<EnemyPosProjectile>().Dispatch(_enemyPos[indexInList]);
+        _posSkill = _enemyPos[indexInList];
     }
 
     private void OnDrawGizmos()

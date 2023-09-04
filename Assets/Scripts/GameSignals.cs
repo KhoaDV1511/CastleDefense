@@ -12,5 +12,7 @@ public class StartFindEnemy : ASignal{}
 public class ManaUse : ASignal<string, int>{}
 public class ArcherSkills : ASignal{}
 public class CombatantSkills : ASignal{}
+public class ThunderSkills : ASignal{}
 public class CoolDownBarArcher : ASignal<int>{}
 public class CoolDownBarCombatant : ASignal<int>{}
+public class CoolDownBarThunder : ASignal<int>{}

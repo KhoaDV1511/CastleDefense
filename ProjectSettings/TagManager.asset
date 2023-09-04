@@ -10,6 +10,7 @@ TagManager:
   - CircleAP
   - CastleReable
   - Acher
+  - Thunder
   layers:
   - Default
   - TransparentFX

@@ -20,6 +20,7 @@ public class SpawnBot : MonoBehaviour
     private void Awake()
     {
         _spawnQuantity = 5;
+        _isCoolDown = false;
         Signals.Get<CombatantSkills>().AddListener(CombatantSkill);
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
     }

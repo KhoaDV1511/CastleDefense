@@ -10,7 +10,7 @@ public class BotAttack : MonoBehaviour
     [SerializeField] private Transform barAppear;
 
     private Tween _coolDownBar;
-    private Tween _coolDownTime;
+    private Tween _coolDownAppear;
     private Tween _speedAttack;
 
     private int timeCoolDown;
@@ -55,7 +55,7 @@ public class BotAttack : MonoBehaviour
     private void OnDestroy()
     {
         _coolDownBar?.Kill();
-        _coolDownTime?.Kill();
+        _coolDownAppear?.Kill();
         _speedAttack?.Kill();
         if(_sweep != null) StopCoroutine(_sweep);
     }
@@ -73,7 +73,7 @@ public class BotAttack : MonoBehaviour
     {
         _speedAttack?.Kill();
         _coolDownBar?.Kill();
-        _coolDownTime?.Kill();
+        _coolDownAppear?.Kill();
         barAppear.localScale = new Vector3(1, 1, 0);
         Destroy(gameObject);
     }
@@ -81,7 +81,7 @@ public class BotAttack : MonoBehaviour
     {
         barAppear.localScale = new Vector3(1, 1, 0);
         _coolDownBar = barAppear.DOScaleX(0, coolDown);
-        _coolDownTime = DOVirtual.DelayedCall(coolDown,() => Destroy(gameObject));
+        _coolDownAppear = DOVirtual.DelayedCall(coolDown,() => Destroy(gameObject));
     }
     private void TrackMovement(Vector3 enemy)
     {
