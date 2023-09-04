@@ -24,7 +24,7 @@ public class Castle : MonoBehaviour
     private const string ACHER = "Archer";
     private const string COMBATANT = "combatant";
     private const string THUNDER = "Thunder";
-    private const string MAGICIAN = "magician";
+    private const string MAGICIAN = "Magician";
     // Start is called before the first frame update
     void Awake()
     {
@@ -58,6 +58,9 @@ public class Castle : MonoBehaviour
                 break;
             case THUNDER:
                 Signals.Get<ThunderSkills>().Dispatch();
+                break;
+            case MAGICIAN:
+                Signals.Get<MagicianSkills>().Dispatch();
                 break;
             default:
                 break;
