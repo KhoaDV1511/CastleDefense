@@ -34,6 +34,8 @@ public class SpawnArrow : MonoBehaviour
     private const string ACHER = "Archer";
     private Tween _doneSkill;
     private Tween _coolDownSkill;
+    private float _startTime;
+    private float _timeCoolDownRemain;
 
     private GamePlayModel _gamePlayModel = GamePlayModel.Instance;
     // Start is called before the first frame update
@@ -49,11 +51,14 @@ public class SpawnArrow : MonoBehaviour
             Instance = _instance;
         }
 
+        _timeCoolDownRemain = 0;
+        _startTime = 0;
         _isCoolDown = false;
         _startInvoke = false;
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
         Signals.Get<StartFindEnemy>().AddListener(StartSpawn);
         Signals.Get<ArcherSkills>().AddListener(SkillArcher);
+        Signals.Get<TimeReduce>().AddListener(SkillAfterReduce);
     }
 
     private void OnMouseDown()
@@ -65,12 +70,20 @@ public class SpawnArrow : MonoBehaviour
         
     }
 
+    private void SkillAfterReduce(float reduce)
+    {
+        _coolDownSkill?.Kill();
+        _timeCoolDownRemain = TIME_COOLDOWN_SKILL - (Time.time - _startTime) + reduce;
+        _coolDownSkill = DOVirtual.DelayedCall(_timeCoolDownRemain, () => _isCoolDown = false);
+    }
+
     private void SkillArcher()
     {
         CancelInvoke();
         _repeatRate = 0.2f;
         InvokeRepeating(nameof(SpawnProjectile), 0, _repeatRate);
         _isCoolDown = true;
+        _startTime = Time.time;
         Signals.Get<CoolDownBarArcher>().Dispatch(TIME_COOLDOWN_SKILL);
         _coolDownSkill = DOVirtual.DelayedCall(TIME_COOLDOWN_SKILL, () => _isCoolDown = false);
         _doneSkill = DOVirtual.DelayedCall(TIME_SKILL,() =>

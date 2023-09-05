@@ -23,6 +23,6 @@ public class BarManaMagician : MonoBehaviour
     private void ManaArcherCoolDown(int coolDown)
     {
         mana.localScale = new Vector3(0, 1, 0);
-        _coolDown = mana.DOScaleX(1, coolDown);
+        _coolDown = mana.DOScaleX(1, coolDown).SetEase(Ease.Linear);
     }
 }

@@ -31,24 +31,36 @@ public class SpawnProjectile : MonoBehaviour
 
     private bool _isCoolDown = false;
     private bool _startInvoke = false;
+    private float _startTime;
+    private float _timeCoolDownRemain;
     // Start is called before the first frame update
     void Awake()
     {
+        _timeCoolDownRemain = 0;
+        _startTime = 0;
         _startInvoke = false;
         _isCoolDown = false;
         Signals.Get<ThunderSkills>().AddListener(Thunder);
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
         Signals.Get<StartFindEnemy>().AddListener(StartSpawn);
+        Signals.Get<TimeReduce>().AddListener(SkillAfterReduce);
     }
     private void OnMouseDown()
     {
         if(_gamePlayModel.isPlaying && _enemysInsideArea.Length > 0 && !_isCoolDown)
             Signals.Get<ManaUse>().Dispatch(THUNDER, MANA_COMBATANT);
     }
+    private void SkillAfterReduce(float reduce)
+    {
+        _coolDownSkill?.Kill();
+        _timeCoolDownRemain = TIME_COOLDOWN_SKILL - (Time.time - _startTime) + reduce;
+        _coolDownSkill = DOVirtual.DelayedCall(_timeCoolDownRemain, () => _isCoolDown = false);
+    }
 
     private void Thunder()
     {
         _isCoolDown = true;
+        _startTime = Time.time;
         Signals.Get<CoolDownBarThunder>().Dispatch(TIME_COOLDOWN_SKILL);
         _coolDownSkill = DOVirtual.DelayedCall(TIME_COOLDOWN_SKILL, () =>
         {

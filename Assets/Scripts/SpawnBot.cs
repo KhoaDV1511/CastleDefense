@@ -16,13 +16,18 @@ public class SpawnBot : MonoBehaviour
     private const int TIME_COOLDOWN_SKILL = 10;
     private bool _isCoolDown = false;
     private Tween _coolDownSkill;
+    private float _startTime;
+    private float _timeCoolDownRemain;
     // Start is called before the first frame update
     private void Awake()
     {
+        _timeCoolDownRemain = 0;
+        _startTime = 0;
         _spawnQuantity = 5;
         _isCoolDown = false;
         Signals.Get<CombatantSkills>().AddListener(CombatantSkill);
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
+        Signals.Get<TimeReduce>().AddListener(SkillAfterReduce);
     }
 
     void OnMouseDown()
@@ -30,10 +35,16 @@ public class SpawnBot : MonoBehaviour
         if(_gamePlayModel.isPlaying && !_isCoolDown)
             Signals.Get<ManaUse>().Dispatch(COMBATANT, MANA_COMBATANT);
     }
-
+    private void SkillAfterReduce(float reduce)
+    {
+        _coolDownSkill?.Kill();
+        _timeCoolDownRemain = TIME_COOLDOWN_SKILL - (Time.time - _startTime) + reduce;
+        _coolDownSkill = DOVirtual.DelayedCall(_timeCoolDownRemain, () => _isCoolDown = false);
+    }
     private void CombatantSkill()
     {
         _isCoolDown = true;
+        _startTime = Time.time;
         Signals.Get<CoolDownBarCombatant>().Dispatch(TIME_COOLDOWN_SKILL);
         _coolDownSkill = DOVirtual.DelayedCall(TIME_COOLDOWN_SKILL, () => _isCoolDown = false);
         var posObj = objBot.transform.position;

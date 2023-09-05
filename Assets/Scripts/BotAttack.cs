@@ -33,12 +33,12 @@ public class BotAttack : MonoBehaviour
     void Awake()
     {
         isAttack = false;
-        _speed = 5;
-        //_maxSpeed = 5;
+        _speed = 0.01f;
+        _maxSpeed = 8;
         if(_sweep != null) StopCoroutine(_sweep);
         _sweep = StartCoroutine(EnemyPos());
-        // if(_speedUp != null) StopCoroutine(_speedUp);
-        // _speedUp = StartCoroutine(SpeedUp());
+        if(_speedUp != null) StopCoroutine(_speedUp);
+        _speedUp = StartCoroutine(SpeedUp());
         timeCoolDown = 8;
         AppearCoolDown(timeCoolDown);
         Signals.Get<OnStopGame>().AddListener(StopCoolDown);
@@ -103,7 +103,7 @@ public class BotAttack : MonoBehaviour
     private IEnumerator EnemyPos()
     {
         _enemyPos.Clear();
-        float radius = 0.5f;
+        float radius = 0.4f;
         _enemysInsideArea = Physics2D.OverlapCircleAll(transform.position, radius, mask);
         if(_enemysInsideArea.Length > 0)
             PosEnemyMin();
