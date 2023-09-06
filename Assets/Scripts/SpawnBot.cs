@@ -23,7 +23,7 @@ public class SpawnBot : MonoBehaviour
     {
         _timeCoolDownRemain = 0;
         _startTime = 0;
-        _spawnQuantity = 5;
+        _spawnQuantity = 4;
         _isCoolDown = false;
         Signals.Get<CombatantSkills>().AddListener(CombatantSkill);
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
