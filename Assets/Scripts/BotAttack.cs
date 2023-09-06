@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.AI;
 
 public class BotAttack : MonoBehaviour
 {
     [SerializeField] private Transform barAppear;
+    private NavMeshAgent _agent;
 
     private Tween _coolDownBar;
     private Tween _coolDownAppear;
     private Tween _speedAttack;
+    private Tween _timeStopAttack;
 
     private int timeCoolDown;
     private float _speed;
@@ -24,7 +27,7 @@ public class BotAttack : MonoBehaviour
     private Coroutine _sweep;
     private Collider2D[] _enemysInsideArea;
     [SerializeField] LayerMask mask;
-    private float _sweepFrequency = 0.01f;
+    private float _sweepFrequency = 0.005f;
     private List<Vector3> _enemyPos = new List<Vector3>();
     private List<float> _distanceEnemy = new List<float>();
     private bool isAttack = false;
@@ -32,9 +35,12 @@ public class BotAttack : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.updateRotation = false;
+        _agent.updateUpAxis = false;
         isAttack = false;
         _speed = 0.01f;
-        _maxSpeed = 8;
+        _maxSpeed = 5;
         if(_sweep != null) StopCoroutine(_sweep);
         _sweep = StartCoroutine(EnemyPos());
         if(_speedUp != null) StopCoroutine(_speedUp);
@@ -57,6 +63,7 @@ public class BotAttack : MonoBehaviour
         _coolDownBar?.Kill();
         _coolDownAppear?.Kill();
         _speedAttack?.Kill();
+        _timeStopAttack?.Kill();
         if(_sweep != null) StopCoroutine(_sweep);
     }
 
@@ -71,10 +78,10 @@ public class BotAttack : MonoBehaviour
 
     private void StopCoolDown()
     {
+        _timeStopAttack?.Kill();
         _speedAttack?.Kill();
         _coolDownBar?.Kill();
         _coolDownAppear?.Kill();
-        barAppear.localScale = new Vector3(1, 1, 0);
         Destroy(gameObject);
     }
     private void AppearCoolDown(int coolDown)
@@ -85,11 +92,21 @@ public class BotAttack : MonoBehaviour
     }
     private void TrackMovement(Vector3 enemy)
     {
-        transform.position = Vector2.MoveTowards(transform.position, enemy, _speed * Time.deltaTime);
+        //transform.position = Vector2.MoveTowards(transform.position, enemy, _speed * Time.deltaTime);
+        _agent.SetDestination(enemy);
         var dis = Vector3.Distance(transform.position, enemy);
-        if (dis < 0.35f && !isAttack)
+        if (dis < 0.5f && !isAttack)
         {
             isAttack = true;
+            // dung bot khoang t bang tg vung don danh
+            _agent.speed = 0;
+            _timeStopAttack = DOVirtual.DelayedCall(0.3f, () =>
+            {
+                _agent.speed = 3;
+                // if(_speedUp != null) StopCoroutine(_speedUp);
+                // _speedUp = StartCoroutine(SpeedUp());
+            });
+            
             DameEnemy(enemy);
             _speedAttack = DOVirtual.DelayedCall(1, () => isAttack = false);
         }
@@ -103,7 +120,7 @@ public class BotAttack : MonoBehaviour
     private IEnumerator EnemyPos()
     {
         _enemyPos.Clear();
-        float radius = 0.4f;
+        float radius = 6f;
         _enemysInsideArea = Physics2D.OverlapCircleAll(transform.position, radius, mask);
         if(_enemysInsideArea.Length > 0)
             PosEnemyMin();
