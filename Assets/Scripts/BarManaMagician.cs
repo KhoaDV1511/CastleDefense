@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class BarManaMagician : BarMana
+public class BarManaMagician : Character
 {
     // Start is called before the first frame update
     void Awake()
     {
         Signals.Get<CoolDownBarMagician>().AddListener(ManaArcherCoolDown);
-        Signals.Get<OnStopGame>().AddListener(StopCoolDown);
+        Signals.Get<OnStopGame>().AddListener(OnStopGame);
     }
     
     private void ManaArcherCoolDown(int coolDown)

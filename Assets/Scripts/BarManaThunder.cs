@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class BarManaThunder : BarMana
+public class BarManaThunder : Character
 {
     // Start is called before the first frame update
     void Awake()
     {
-        InitTime();
+        InitPlayer();
         Signals.Get<CoolDownBarThunder>().AddListener(ManaArcherCoolDown);
-        Signals.Get<OnStopGame>().AddListener(StopCoolDown);
+        Signals.Get<OnStopGame>().AddListener(OnStopGame);
         Signals.Get<TimeReduce>().AddListener(ReduceTime);
     }
     

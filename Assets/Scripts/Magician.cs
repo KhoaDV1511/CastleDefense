@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class SkillMagician : MonoBehaviour
+public class Magician : MonoBehaviour
 {
     private const int MANA_COMBATANT = 10;
     private const string MAGICIAN = "Magician";

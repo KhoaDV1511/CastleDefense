@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class BarManaCombatant : BarMana
+public class BarManaCombatant : Character
 {
     // Start is called before the first frame update
     void Awake()
     {
-        InitTime();
+        InitPlayer();
         Signals.Get<CoolDownBarCombatant>().AddListener(ManaArcherCoolDown);
-        Signals.Get<OnStopGame>().AddListener(StopCoolDown);
+        Signals.Get<OnStopGame>().AddListener(OnStopGame);
         Signals.Get<TimeReduce>().AddListener(ReduceTime);
     }
 

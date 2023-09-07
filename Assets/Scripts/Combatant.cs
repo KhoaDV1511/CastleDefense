@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpawnBot : MonoBehaviour
+public class Combatant : MonoBehaviour
 {
     [SerializeField] private GameObject objBot;
     private int _spawnQuantity;

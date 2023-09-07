@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        TrackMovement(SpawnArrow.Instance.enemyPosMin);
+        TrackMovement(Archer.Instance.enemyPosMin);
     }
 
     private void OnDestroy()

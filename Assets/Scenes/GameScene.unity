@@ -2380,6 +2380,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mana: {fileID: 1696715641}
+  objShoot: {fileID: 0}
+  radius: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  enemyPosMin: {x: 0, y: 0, z: 0}
 --- !u!1 &378880600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2741,6 +2747,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mana: {fileID: 1532451423}
+  objShoot: {fileID: 0}
+  radius: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  enemyPosMin: {x: 0, y: 0, z: 0}
 --- !u!1 &455406069
 GameObject:
   m_ObjectHideFlags: 0
@@ -6987,12 +6999,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c9e84dd88e46243890f9a33410cc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mana: {fileID: 69246802}
   objShoot: {fileID: 2034623899}
-  skill: {fileID: 1252358093}
   radius: 8
   mask:
     serializedVersion: 2
     m_Bits: 64
+  enemyPosMin: {x: 0, y: 0, z: 0}
+  skill: {fileID: 1252358093}
 --- !u!60 &1449574751
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7343,6 +7357,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mana: {fileID: 1629043097}
+  objShoot: {fileID: 0}
+  radius: 0
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
+  enemyPosMin: {x: 0, y: 0, z: 0}
 --- !u!1 &1551862585
 GameObject:
   m_ObjectHideFlags: 0
@@ -8753,7 +8773,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1940525102}
   - component: {fileID: 1940525103}
-  - component: {fileID: 1940525104}
   m_Layer: 5
   m_Name: BarMana
   m_TagString: Untagged
@@ -8829,19 +8848,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1940525104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940525098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68826a36e3a664e4cafe28275b2823be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mana: {fileID: 69246802}
 --- !u!1 &1959365777
 GameObject:
   m_ObjectHideFlags: 0
