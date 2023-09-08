@@ -11,7 +11,7 @@ using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class EnemyTypeOne : MonoBehaviour
+public class EnemyTypeOne : Enemy
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private NavMeshObstacle obstacle;
@@ -54,7 +54,7 @@ public class EnemyTypeOne : MonoBehaviour
     private const int DAME_BOT = 2;
     private const int DAME_THUNDER= 3;
     // Start is called before the first frame update
-    private void Awake()
+    protected override void Awake()
     {
         BotAttack.EnemyTypeOnes.Add(this);
         agent.updateRotation = false;
@@ -68,7 +68,7 @@ public class EnemyTypeOne : MonoBehaviour
         _onStopGame.AddListener(DestroyEnemy);
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         BotAttack.EnemyTypeOnes.Remove(this);
         _castlePos.RemoveListener(TrackMovement);

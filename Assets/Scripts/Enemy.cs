@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class SpawnEnemy : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private GameObject objEnemy;
     [SerializeField] private GameObject castle;
@@ -14,13 +14,13 @@ public class SpawnEnemy : MonoBehaviour
     private Vector2 _posSpawn;
     private int _spawnQuantity;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         btnBattle.onClick.AddListener(EnemyAttack);
         Signals.Get<OnStopGame>().AddListener(BattleStop);
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         Signals.Get<OnStopGame>().RemoveListener(BattleStop);
     }
