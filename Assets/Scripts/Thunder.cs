@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class Thunder : Character
 {
-    [SerializeField] private GameObject skill;
-
     private const int MANA_THUNDER = 10;
     private const string THUNDER = "Thunder";
     private GamePlayModel _gamePlayModel = GamePlayModel.Instance;
@@ -15,6 +13,7 @@ public class Thunder : Character
     void Awake()
     {
         InitPlayer();
+        InitStartInvoke();
         InitTimeCoolDownSkill();
         Signals.Get<ThunderSkills>().AddListener(SkillThunder);
         Signals.Get<OnStopGame>().AddListener(OnStopGame);
@@ -27,6 +26,13 @@ public class Thunder : Character
     {
         if(_gamePlayModel.isPlaying && _enemysInsideArea.Length > 0 && !_isCoolDown)
             UseSkill(THUNDER, MANA_THUNDER);
+    }
+
+    private void OnStopGame()
+    {
+        StopBarMana();
+        StopCoolDownSkill();
+        StopInvoke();
     }
     private void ManaCoolDown(int coolDown)
     {

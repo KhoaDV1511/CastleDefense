@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class SkillThunderAppear : MonoBehaviour
+public class SkillAppear : MonoBehaviour
 {
     private Tween _coolDownAppear;
     private void OnEnable()

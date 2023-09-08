@@ -8,6 +8,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     [SerializeField] private Transform mana;
+    [SerializeField] protected GameObject skill;
     [SerializeField] private Transform objShoot;
     [SerializeField] protected float radius;
     [SerializeField] LayerMask mask;
@@ -20,26 +21,34 @@ public class Character : MonoBehaviour
     public Vector3 enemyPosMin;
 
     private Tween _coolDownMana;
-    private Tween _coolDownSkill;
+    protected Tween _coolDownSkill;
     
     private float _sweepFrequency = 0.005f;
     private float _startTime;
     private float _timeCoolDownRemain;
     private float _timeCoolDown;
     
+    protected int _spawnQuantity;
+    
     private Coroutine _sweep;
     
     private bool _startInvoke = false;
     protected bool _isCoolDown = false;
 
-    protected void OnStopGame()
+    protected void StopInvoke()
+    {
+        if(_sweep != null) StopCoroutine(_sweep);
+        CancelInvoke();
+    }
+    protected void StopCoolDownSkill()
+    {
+        _coolDownSkill?.Kill();
+        _isCoolDown = false;
+    }
+    protected void StopBarMana()
     {
         _coolDownMana?.Kill();
         mana.localScale = new Vector3(1, 1, 0);
-        _coolDownSkill?.Kill();
-        _isCoolDown = false;
-        if(_sweep != null) StopCoroutine(_sweep);
-        CancelInvoke();
     }
 
     protected void StartTimeCooldown(float coolDown)
@@ -77,10 +86,18 @@ public class Character : MonoBehaviour
     {
         _timeCoolDownRemain = 0;
         _startTime = 0;
-        _startInvoke = false;
         _isCoolDown = false;
     }
 
+    protected void InitBot()
+    {
+        _spawnQuantity = 4;
+    }
+
+    protected void InitStartInvoke()
+    {
+        _startInvoke = false;
+    }
     protected void InitTimeCoolDownSkill()
     {
         _timeCoolDown = 0;
@@ -121,13 +138,13 @@ public class Character : MonoBehaviour
         var indexInList = _distanceEnemy.IndexOf(min_dis);
         if(!_startInvoke)
         {
-            InvokeRepeating(nameof(SpawnProjectiles), 0, 1f);
+            InvokeRepeating(nameof(SpawnObj), 0, 1f);
             _startInvoke = true;
         }
         Signals.Get<EnemyPosProjectile>().Dispatch(_enemyPos[indexInList]);
         enemyPosMin = _enemyPos[indexInList];
     }
-    protected void SpawnProjectiles()
+    protected void SpawnObj()
     {
         var obj = Instantiate(objShoot, objShoot.transform.position, Quaternion.identity).gameObject;
         obj.transform.SetParent(transform);

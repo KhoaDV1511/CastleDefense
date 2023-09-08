@@ -34,6 +34,7 @@ public class Archer : Character
         }
 
         InitPlayer();
+        InitStartInvoke();
         Signals.Get<OnStopGame>().AddListener(StopSpawn);
         Signals.Get<StartFindEnemy>().AddListener(DetectEnemy);
         Signals.Get<ArcherSkills>().AddListener(SkillArcher);
@@ -58,21 +59,22 @@ public class Archer : Character
     {
         CancelInvoke();
         _repeatRate = 0.2f;
-        InvokeRepeating(nameof(SpawnProjectiles), 0, _repeatRate);
+        InvokeRepeating(nameof(SpawnObj), 0, _repeatRate);
         Signals.Get<CoolDownBarArcher>().Dispatch(TIME_COOLDOWN_SKILL);
         TimeUseSkill(TIME_COOLDOWN_SKILL);
         _doneSkill = DOVirtual.DelayedCall(TIME_PROCESS_SKILL,() =>
         {
             CancelInvoke();
             _repeatRate = 1f;
-            InvokeRepeating(nameof(SpawnProjectiles), 0, _repeatRate);
+            InvokeRepeating(nameof(SpawnObj), 0, _repeatRate);
         });
     }
     private void StopSpawn()
     {
         _gamePlayModel.isPlaying = false;
         _doneSkill?.Kill();
-        OnStopGame();
+        StopCoolDownSkill();
+        StopInvoke();
     }
 
     private void OnDrawGizmos()
