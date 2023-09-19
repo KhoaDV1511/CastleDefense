@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Button btnBattle;
     private Vector2 _posSpawn;
     private int _spawnQuantity;
+    protected int _healthAddEnemyOne;
+    protected int _dameAddEnemyOne;
 
     protected virtual void Awake()
     {
@@ -23,6 +25,12 @@ public class Enemy : MonoBehaviour
     protected virtual void OnDestroy()
     {
         Signals.Get<OnStopGame>().RemoveListener(BattleStop);
+    }
+
+    protected void LevelUpEnemyOne(int health = 10, int dame = 1)
+    {
+        _healthAddEnemyOne += health;
+        _dameAddEnemyOne += dame;
     }
 
     private void BattleStop()

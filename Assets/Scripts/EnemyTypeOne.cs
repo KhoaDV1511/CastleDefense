@@ -29,7 +29,6 @@ public class EnemyTypeOne : Enemy
     private List<Vector3> _posAIMove = new List<Vector3>();
 
     private int _posRandom;
-    public int _health = 10;
     private int _healthMax;
     private int _quantity;
 
@@ -50,7 +49,6 @@ public class EnemyTypeOne : Enemy
 
     private const int DAME_ERROW = 2;
     private const int DAME_CIRCLE_AP = 1;
-    private const int DAME_ENEMY = 1;
     private const int DAME_BOT = 2;
     private const int DAME_THUNDER= 3;
     // Start is called before the first frame update
@@ -60,7 +58,8 @@ public class EnemyTypeOne : Enemy
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         _stopAIMove = false;
-        _healthMax = _health;
+        LevelUpEnemyOne();
+        _healthMax = _healthAddEnemyOne;
         _castlePos.AddListener(TrackMovement);
         _quantityEnemy.AddListener(Quantity);
         Signals.Get<PosAIMove>().AddListener(PosAIMoveTo);
@@ -144,7 +143,7 @@ public class EnemyTypeOne : Enemy
         {
             agent.enabled = false;
             obstacle.enabled = true;
-            Signals.Get<DameEnemy>().Dispatch(DAME_ENEMY);
+            Signals.Get<DameEnemy>().Dispatch(_dameAddEnemyOne);
         }
  
         if(_quantity <= 0) yield break;
@@ -155,12 +154,12 @@ public class EnemyTypeOne : Enemy
 
     public void DameBotAttack()
     {
-        _health -= DAME_BOT;
+        _healthAddEnemyOne -= DAME_BOT;
         var scaleX = spriteHealth.transform.localScale.x - (float)DAME_BOT / _healthMax;
         if (scaleX <= 0) scaleX = 0;
         spriteHealth.transform.localScale = new Vector3(scaleX, 1, 1);
         
-        if (_health > 0) return;
+        if (_healthAddEnemyOne > 0) return;
         _castlePos.Dispatch(_castleAttack);
         _quantity--;
         if(_quantity <= 0)
@@ -181,26 +180,26 @@ public class EnemyTypeOne : Enemy
         }
         if (other.CompareTag(ARROW))
         {
-            _health -= DAME_ERROW;
+            _healthAddEnemyOne -= DAME_ERROW;
             var scaleX = spriteHealth.transform.localScale.x - (float)DAME_ERROW / _healthMax;
             if (scaleX <= 0) scaleX = 0;
             spriteHealthTransform.localScale = new Vector3(scaleX, 1, 1);
         }
         if (other.CompareTag(CIRCLE_AP))
         {
-            _health -= DAME_CIRCLE_AP;
+            _healthAddEnemyOne -= DAME_CIRCLE_AP;
             var scaleX = spriteHealth.transform.localScale.x - (float)DAME_CIRCLE_AP / _healthMax;
             if (scaleX <= 0) scaleX = 0;
             spriteHealthTransform.localScale = new Vector3(scaleX, 1, 1);
         }
         if (other.CompareTag(THUNDER))
         {
-            _health -= DAME_THUNDER;
+            _healthAddEnemyOne -= DAME_THUNDER;
             var scaleX = spriteHealth.transform.localScale.x - (float)DAME_THUNDER / _healthMax;
             if (scaleX <= 0) scaleX = 0;
             spriteHealthTransform.localScale = new Vector3(scaleX, 1, 1);
         }
-        if (_health > 0) return;
+        if (_healthAddEnemyOne > 0) return;
         _castlePos.Dispatch(_castleAttack);
         _quantity--;
         if(_quantity <= 0)

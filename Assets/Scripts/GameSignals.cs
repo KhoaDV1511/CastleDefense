@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPosProjectile : ASignal<Vector3>{}
 public class CastlePos : ASignal<Vector3>{}
 public class PosAIMove : ASignal<Vector3>{}
-public class QuantityEnemy : ASignal<int>{}
+public class QuantityEnemy : ASignal<int>{} // số lượng enemy
 public class DameEnemy : ASignal<int>{}
 public class OnStopGame : ASignal{}
 public class StartFindEnemy : ASignal{}
