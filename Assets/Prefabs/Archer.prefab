@@ -331,6 +331,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d5b4ce093fe59469993cc93e9053d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mana: {fileID: 6691534347838536831}
+  skill: {fileID: 2556868115698400677}
   objShoot: {fileID: 7776902081414802776}
   radius: 16
   mask:

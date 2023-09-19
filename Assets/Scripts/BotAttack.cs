@@ -32,6 +32,8 @@ public class BotAttack : MonoBehaviour
     private List<float> _distanceEnemy = new List<float>();
     private bool isAttack = false;
 
+    private OnStopGame _onStopGame = Signals.Get<OnStopGame>();
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,7 +49,7 @@ public class BotAttack : MonoBehaviour
         _speedUp = StartCoroutine(SpeedUp());
         timeCoolDown = 8;
         AppearCoolDown(timeCoolDown);
-        Signals.Get<OnStopGame>().AddListener(StopCoolDown);
+        _onStopGame.AddListener(StopCoolDown);
     }
 
     private void Update()
@@ -65,6 +67,7 @@ public class BotAttack : MonoBehaviour
         _speedAttack?.Kill();
         _timeStopAttack?.Kill();
         if(_sweep != null) StopCoroutine(_sweep);
+        _onStopGame.RemoveListener(StopCoolDown);
     }
 
     IEnumerator SpeedUp()
